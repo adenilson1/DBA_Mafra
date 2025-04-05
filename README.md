@@ -1,5 +1,5 @@
-Banco de Dados
+DBA Mafra
 conhecimentos:
-1) Teoria
+1) cap01 - teoria e pratica
 2) 
 
