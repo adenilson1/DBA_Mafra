@@ -85,3 +85,11 @@ DESC CLEINTE;
 | TELEFONE | varchar(30)  | YES  |     | NULL    |       |
 | ENDERECO | varchar(100) | YES  |     | NULL    |       |
 +----------+--------------+------+-----+---------+-------+
+
+/*TIPAGEM*/
+
+CHAR E VARCHAR -> ARVOREM, JOAO, MATEMATICA
+FLOAT E INT -> 2,8 ; 10; 2,14
+BLOB -> IMAGEM 
+TEXT -> TEXTO
+
