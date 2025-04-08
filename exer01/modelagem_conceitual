@@ -1,0 +1,9 @@
+#MODELAGEM CONCEITUAL
+
+nome do livro - caracter(100)
+nome do autor - caracter(50)
+sexo do autor - caracter(1)
+numero de paginas do livro - numeral
+nome da editora - caracter(50)
+estado da editora - caracter(2)
+ano de publicação - data
