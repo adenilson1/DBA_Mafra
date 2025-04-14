@@ -151,3 +151,120 @@ WHERE SEXO = 'F' AND ENDERECO LIKE '%ESTACIO';
 
 Empty set (0.00 sec)
 
+
+/*FUNÇÃO DE AGREGAÇÃO*/
+#SUMERAZINDO DADOS
+
+/*COUNT(*), GROUP BY, PERFORMANCE COM OPERADORES LOGICOS*/
+
+SHOW DATABASES;
+
+USE PROJETO;
+
+SHOW TABLES;
++-------------------+
+| Tables_in_PROJETO |
++-------------------+
+| CLIENTE           |
++-------------------+
+
+DESC CLIENTE;
+
+SELECT * FROM CLIENTE;
++--------+------+---------------------+-----------+-----------+------------------------------------------------+
+| NOME   | SEXO | EMAIL               | CPF       | TELEFONE  | ENDERECO                                       |
++--------+------+---------------------+-----------+-----------+------------------------------------------------+
+| JOAO   | M    | JOAO@)GMAIL.COM     | 988638273 | 22923110  | MAIA LACERDA - ESTACIO - RIO DE JANEIRO - RJ   |
+| CELIA  | F    | CELIA@)GMAIL.COM    | 541521456 | 25078869  | RIACHUELO - CENTRO - RIO DE JANEIRO - RJ       |
+| JORGE  | M    | NULL                | 885755896 | 58748895  | OSCAR CURY - BOM RETIRO - PATOS DE MINAS - MG  |
+| ANA    | F    | ANA@GLOBO.COM       |  85548962 | 548556985 | PRES. ANTONIO CARLOS - CENTRO - SAO PAULO - SP |
+| CARLA  | F    | CARLA@TERATI.COM.BR |   7745828 | 66587458  | SAMUEL SILVA - CENTRO - BELO HORIZONTE - MG    |
+| LILIAN | F    | NULL                | 887777485 | 947785696 | SENADOR SOARES - TIJUCA - RIO DE JANEIRO - RJ  |
++--------+------+---------------------+-----------+-----------+------------------------------------------------+
+
+#CONTANDO REGISTROS DE UMA TABELA - COUNT(*)
+
+SELECT COUNT(*) FROM CLIENTE;
+
++----------+
+| COUNT(*) |
++----------+
+|        6 |
++----------+
+
+SELECT COUNT(*) AS "QUANTIDADE DE REGISTRO DA TABELA CLIENTE"
+FROM CLIENTE;
++------------------------------------------+
+| QUANTIDADE DE REGISTRO DA TABELA CLIENTE |
++------------------------------------------+
+|                                        6 |
++------------------------------------------+
+
+
+#OPERANDO GROUP BY
+
+
+SELECT SEXO, COUNT(*) FROM CLIENTE
+GROUP BY SEXO;
++------+----------+
+| SEXO | COUNT(*) |
++------+----------+
+| M    |        2 |
+| F    |        4 |
++------+----------+
+
+SELECT SEXO, COUNT(*) AS 'QUANTIDADE'
+FROM CLIENTE
+GROUP BY SEXO;
+
++------+------------+
+| SEXO | QUANTIDADE |
++------+------------+
+| M    |          2 |
+| F    |          4 |
++------+------------+
+
+#PERFORMACE COM OPERADORES LOGICOS
+
+#PARA CONTAR
+SELECT COUNT(*) FROM CLIENTE;
++----------+
+| COUNT(*) |
++----------+
+|        6 |
++----------+
+
+SELECT SEXO, COUNT(*) FROM CLIENTE
+GROUP BY SEXO;
++------+----------+
+| SEXO | COUNT(*) |
++------+----------+
+| M    |        2 |
+| F    |        4 |
++------+----------+
+
+SELECT ENDERECO, SEXO, COUNT(*) AS "QUANTIDADE"
+FROM CLIENTE
+WHERE ENDERECO LIKE '%RIO DE JANEIRO%' AND SEXO = 'F';
+GROUP BY SEXO;
+
++------+------------+
+| SEXO | QUANTIDADE |
++------+------------+
+| F    |          2 |
++------+------------+
+
+SELECT ENDERECO, SEXO FROM CLIENTE;
+
+SELECT NOME, SEXO, ENDERECO
+FROM CLIENTE
+WHERE SEXO = 'F' OR ENDERECO LIKE "%RIO DE JANEIRO%";
++--------+------+------------------------------------------------+
+| NOME   | SEXO | ENDERECO                                       |
++--------+------+------------------------------------------------+
+| JOAO   | M    | MAIA LACERDA - ESTACIO - RIO DE JANEIRO - RJ   |
+| CELIA  | F    | RIACHUELO - CENTRO - RIO DE JANEIRO - RJ       |
+| ANA    | F    | PRES. ANTONIO CARLOS - CENTRO - SAO PAULO - SP |
+| CARLA  | F    | SAMUEL SILVA - CENTRO - BELO HORIZONTE - MG    |
+| LILIAN | F    | SENADOR SOARES - TIJUCA - RIO DE JANEIRO - RJ  |
++--------+------+------------------------------------------------+
