@@ -608,3 +608,52 @@ Conclusão
 A instrução UPDATE é essencial para manter os dados de um banco de dados precisos e atualizados. Entender como utilizá-la corretamente é fundamental para a gestão eficaz de dados. Com prática, você ficará mais confiante em sua capacidade de modificar dados de maneira segura e eficiente.
 
 */
+
+/*CLAUSULA DELETE - CUIDADO COM O USO DO DELETE, ELE DEVE SER 
+USADO JUNTO COM WHERE. SEM USO SO WHERE TODA A TABELA SERÁ APAGADA
+É SEMPRE BOM USAR O COMMIT E ROLLBACK PARA RECUPERAR TABELAS*/
+
+DELETE FROM CLIENTE
+WHERE NOME = 'ANA';
+
+SELECT NOME, EMAIL
+FROM CLIENTE;
++--------+--------------------+
+| NOME   | EMAIL              |
++--------+--------------------+
+| JOAO   | JOAO@IG.COM        |
+| CELIA  | CELIA@GMAIL.COM    |
+| JORGE  | JORGE@IG.COM       |
+| CARLA  | CARLA@GMAIL.COM    |
+| LILIAN | LILIAN@HOTMAIL.COM |
++--------+--------------------+
+
+INSERT INTO CLIENTE VALUES('CARLA','F',
+'C.LOPEZ@UOL.COM',45123678,'1234567889',
+'RUA COPPER LEAF - WIILIANBURG - KITCHEENER');
+
+SELECT * FROM CLIENTE;
++--------+------+--------------------+-----------+------------+-----------------------------------------------+
+| NOME   | SEXO | EMAIL              | CPF       | TELEFONE   | ENDERECO                                      |
++--------+------+--------------------+-----------+------------+-----------------------------------------------+
+| JOAO   | M    | JOAO@IG.COM        | 988638273 | 22923110   | MAIA LACERDA - ESTACIO - RIO DE JANEIRO - RJ  |
+| CELIA  | F    | CELIA@GMAIL.COM    | 541521456 | 25078869   | RIACHUELO - CENTRO - RIO DE JANEIRO - RJ      |
+| JORGE  | M    | JORGE@IG.COM       | 885755896 | 58748895   | OSCAR CURY - BOM RETIRO - PATOS DE MINAS - MG |
+| CARLA  | F    | CARLA@GMAIL.COM    |   7745828 | 66587458   | SAMUEL SILVA - CENTRO - BELO HORIZONTE - MG   |
+| LILIAN | F    | LILIAN@HOTMAIL.COM | 887777485 | 947785696  | SENADOR SOARES - TIJUCA - RIO DE JANEIRO - RJ |
+| CARLA  | F    | C.LOPEZ@UOL.COM    |  45123678 | 1234567889 | RUA COPPER LEAF - WIILIANBURG - KITCHEENER    |
++--------+------+--------------------+-----------+------------+-----------------------------------------------+
+
+DELETE FROM CLIENTE
+WHERE NOME = 'CARLA'
+AND EMAIL = 'CARLA@GMAIL.COM';
+
++--------+------+--------------------+-----------+------------+-----------------------------------------------+
+| NOME   | SEXO | EMAIL              | CPF       | TELEFONE   | ENDERECO                                      |
++--------+------+--------------------+-----------+------------+-----------------------------------------------+
+| JOAO   | M    | JOAO@IG.COM        | 988638273 | 22923110   | MAIA LACERDA - ESTACIO - RIO DE JANEIRO - RJ  |
+| CELIA  | F    | CELIA@GMAIL.COM    | 541521456 | 25078869   | RIACHUELO - CENTRO - RIO DE JANEIRO - RJ      |
+| JORGE  | M    | JORGE@IG.COM       | 885755896 | 58748895   | OSCAR CURY - BOM RETIRO - PATOS DE MINAS - MG |
+| LILIAN | F    | LILIAN@HOTMAIL.COM | 887777485 | 947785696  | SENADOR SOARES - TIJUCA - RIO DE JANEIRO - RJ |
+| CARLA  | F    | C.LOPEZ@UOL.COM    |  45123678 | 1234567889 | RUA COPPER LEAF - WIILIANBURG - KITCHEENER    |
++--------+------+--------------------+-----------+------------+-----------------------------------------------+
