@@ -20,4 +20,71 @@
  
  NOTA: NAO SE MODELA PRO PROCESSEDIMENTO OU NEGOCIO, PORQUE ELES
  PODEM MUDAR.*/
+/*CARDINALIDADE (X,Y)
+ 
+ QUEM DEFINE A CARDINALIDADE É A REGRA DE NEGOCIO
+ 
+ -> PRIMEIRO ALGARISMO (X)= OBRIGATORIEDADE
+ 0-> NÃO OBRIGATORIO
+ 1-> OBRIGATORIO
+ 
+ SEGUNDO ALGARISMO (Y) = CARDINALIDADE
+ 1 -> MINIMO
+ n -> MAIS DE UM
+ */
 SHOW DATABASES;
+
++--------------------+
+| Database           |
++--------------------+
+| LIVRARIA           |
+| LIVRARIA01         |
+| PROJETO            |
+| exercicio          |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+
+CREATE DATABASE COMERCIO;
+
+SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| COMERCIO           |
+| LIVRARIA           |
+| LIVRARIA01         |
+| PROJETO            |
+| exercicio          |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+
+USE COMERCIO;
+
+/*CRIANDO TABELAS*/
+
+/*CLIENTE*/
+
+CREATE TABLE CLIENTE(
+IDCLIENTE INT PRIMARY KEY AUTO_INCREMENT,
+NOME VARCHAR(30) NOT NULL,
+SEXO ENUM('M', 'F') NOT NULL,
+CPF VARCHAR(15) UNIQUE,
+EMAIL VARCHAR(50) UNIQUE
+);
+
+DESC CLIENTE;
++-----------+---------------+------+-----+---------+----------------+
+| Field     | Type          | Null | Key | Default | Extra          |
++-----------+---------------+------+-----+---------+----------------+
+| IDCLIENTE | int           | NO   | PRI | NULL    | auto_increment |
+| NOME      | varchar(30)   | NO   |     | NULL    |                |
+| SEXO      | enum('M','F') | NO   |     | NULL    |                |
+| CPF       | varchar(15)   | YES  | UNI | NULL    |                |
+| EMAIL     | varchar(50)   | YES  | UNI | NULL    |                |
++-----------+---------------+------+-----+---------+----------------+
