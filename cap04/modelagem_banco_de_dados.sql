@@ -88,3 +88,42 @@ DESC CLIENTE;
 | CPF       | varchar(15)   | YES  | UNI | NULL    |                |
 | EMAIL     | varchar(50)   | YES  | UNI | NULL    |                |
 +-----------+---------------+------+-----+---------+----------------+
+
+/*TELEFONE*/
+
+CREATE TABLE TELEFONE(
+IDTELEFONE INT PRIMARY KEY AUTO_INCREMENT,
+TIPO ENUM('RES','CEL','COM'),
+NUMERO VARCHAR(10)
+);
+
+DESC TELEFONE;
++------------+-------------------------+------+-----+---------+----------------+
+| Field      | Type                    | Null | Key | Default | Extra          |
++------------+-------------------------+------+-----+---------+----------------+
+| IDTELEFONE | int                     | NO   | PRI | NULL    | auto_increment |
+| TIPO       | enum('RES','CEL','COM') | YES  |     | NULL    |                |
+| NUMERO     | varchar(10)             | YES  |     | NULL    |                |
++------------+-------------------------+------+-----+---------+----------------+
+
+
+
+/*ENDERECO*/
+CREATE TABLE ENDERECO(
+IDENDERECO INT PRIMARY KEY AUTO_INCREMENT,
+RUA VARCHAR(30) NOT NULL,
+BAIRRO VARCHAR(30) NOT NULL,
+CIDADE VARCHAR(30) NOT NULL,
+ESTADO CHAR(2) NOT NULL
+);
+
+DESC ENDERECO;
++------------+-------------+------+-----+---------+----------------+
+| Field      | Type        | Null | Key | Default | Extra          |
++------------+-------------+------+-----+---------+----------------+
+| IDENDERECO | int         | NO   | PRI | NULL    | auto_increment |
+| RUA        | varchar(30) | NO   |     | NULL    |                |
+| BAIRRO     | varchar(30) | NO   |     | NULL    |                |
+| CIDADE     | varchar(30) | NO   |     | NULL    |                |
+| ESTADO     | char(2)     | NO   |     | NULL    |                |
++------------+-------------+------+-----+---------+----------------+
