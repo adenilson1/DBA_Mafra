@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<DIAGRAMA ID="1" TIPO="tpConceitual" UniversalUnicID="C699-13-B87F-67-CF97-AC-D6">
+<DIAGRAMA ID="1" TIPO="tpConceitual" UniversalUnicID="6240-D9-9E6F-9C-A66B-61-E">
     <InfoDiagrama ID="1">
         <Versao Valor="3.2.0"/>
         <Autores/>
@@ -214,9 +214,9 @@
         </Pontos>
     </Ligacao>
     <Atributo ID="121">
-        <Bounds Height="14" Left="610" Top="284" Width="81"/>
+        <Bounds Height="14" Left="610" Top="284" Width="80"/>
         <DisablePainted Valor="false"/>
-        <Texto>Atributo_2</Texto>
+        <Texto>IDCLIENTE</Texto>
         <Observacao/>
         <Dicionario/>
         <Fonte Estilo="1" Nome="Arial" Tamanho="12"/>
@@ -243,7 +243,7 @@
         <Largura Valor="1"/>
         <Ligacoes PontaA="121" PontaB="5"/>
         <Pontos>
-            <Ponto Left="607" Top="288"/>
+            <Ponto Left="606" Top="288"/>
             <Ponto Left="587" Top="288"/>
             <Ponto Left="587" Top="288"/>
             <Ponto Left="567" Top="288"/>
@@ -502,7 +502,7 @@
             <Ponto Left="309" Top="182"/>
         </Pontos>
         <Cardinalidade ID="154">
-            <Bounds Height="14" Left="246" Top="66" Width="35"/>
+            <Bounds Height="14" Left="244" Top="88" Width="35"/>
             <DisablePainted Valor="false"/>
             <Texto>Cardinalidade_1</Texto>
             <Observacao/>
@@ -511,7 +511,7 @@
             <Ancorado Valor="false"/>
             <TamanhoAutmatico Valor="true"/>
             <Card Valor="3"/>
-            <MovimentacaoManual Valor="false"/>
+            <MovimentacaoManual Valor="true"/>
             <Papel Valor=""/>
         </Cardinalidade>
     </Ligacao>
@@ -695,4 +695,74 @@
         <Autosize Valor="false"/>
         <MovimentacaoManual Valor="true"/>
     </Texto>
+    <Atributo ID="172">
+        <Bounds Height="14" Left="780" Top="7" Width="87"/>
+        <DisablePainted Valor="false"/>
+        <Texto>ID_CLIENTE</Texto>
+        <Observacao/>
+        <Dicionario/>
+        <Fonte Estilo="1" Nome="Arial" Tamanho="12"/>
+        <Ancorado Valor="false"/>
+        <DirecaoFromInspector Valor="0"/>
+        <Autosize Valor="true"/>
+        <Identificador Valor="true"/>
+        <Opcional Valor="false"/>
+        <Multivalorado Valor="false"/>
+        <CardMinFromString Valor="1"/>
+        <CardMaxFromString Valor="n"/>
+        <TipoAtributo Valor=""/>
+    </Atributo>
+    <Ligacao ID="173">
+        <DisablePainted Valor="false"/>
+        <Tag LinhaMestre="-1"/>
+        <Dashed Valor="false"/>
+        <Ancorado Valor="false"/>
+        <TemSetaPontaA Valor="false"/>
+        <TemSetaPontaB Valor="false"/>
+        <SetaAberta Valor="true"/>
+        <SetaLargura Valor="10"/>
+        <Inteligente Valor="true"/>
+        <Largura Valor="1"/>
+        <Ligacoes PontaA="172" PontaB="7"/>
+        <Pontos>
+            <Ponto Left="777" Top="11"/>
+            <Ponto Left="767" Top="11"/>
+            <Ponto Left="767" Top="37"/>
+        </Pontos>
+    </Ligacao>
+    <Atributo ID="176">
+        <Bounds Height="14" Left="224" Top="6" Width="87"/>
+        <DisablePainted Valor="false"/>
+        <Texto>ID_CLIENTE</Texto>
+        <Observacao/>
+        <Dicionario/>
+        <Fonte Estilo="1" Nome="Arial" Tamanho="12"/>
+        <Ancorado Valor="false"/>
+        <DirecaoFromInspector Valor="0"/>
+        <Autosize Valor="true"/>
+        <Identificador Valor="true"/>
+        <Opcional Valor="false"/>
+        <Multivalorado Valor="false"/>
+        <CardMinFromString Valor="1"/>
+        <CardMaxFromString Valor="n"/>
+        <TipoAtributo Valor=""/>
+    </Atributo>
+    <Ligacao ID="177">
+        <DisablePainted Valor="false"/>
+        <Tag LinhaMestre="-1"/>
+        <Dashed Valor="false"/>
+        <Ancorado Valor="false"/>
+        <TemSetaPontaA Valor="false"/>
+        <TemSetaPontaB Valor="false"/>
+        <SetaAberta Valor="true"/>
+        <SetaLargura Valor="10"/>
+        <Inteligente Valor="true"/>
+        <Largura Valor="1"/>
+        <Ligacoes PontaA="176" PontaB="140"/>
+        <Pontos>
+            <Ponto Left="221" Top="10"/>
+            <Ponto Left="211" Top="10"/>
+            <Ponto Left="211" Top="36"/>
+        </Pontos>
+    </Ligacao>
 </DIAGRAMA>

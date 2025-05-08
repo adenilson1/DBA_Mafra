@@ -127,3 +127,83 @@ DESC ENDERECO;
 | CIDADE     | varchar(30) | NO   |     | NULL    |                |
 | ESTADO     | char(2)     | NO   |     | NULL    |                |
 +------------+-------------+------+-----+---------+----------------+
+
+/*ENTENDO A FOREIGN KEY*/
+
+/*APAGANDO TABLEA -DROP*/
+
+DROP TABLE CLIENTE;
+
+SHOW TABLES;
++--------------------+
+| Tables_in_COMERCIO |
++--------------------+
+| ENDERECO           |
+| TELEFONE           |
++--------------------+
+/*REFAZENDO COM FK*/
+
+CREATE TABLE CLIENTE(
+IDCLIENTE INT PRIMARY KEY AUTO_INCREMENT,
+NOME VARCHAR(30) NOT NULL,
+SEXO ENUM('M', 'F') NOT NULL,
+CPF VARCHAR(15) UNIQUE,
+EMAIL VARCHAR(50) UNIQUE
+);
+
+SHOW TABLES;
++--------------------+
+| Tables_in_COMERCIO |
++--------------------+
+| CLIENTE            |
+| ENDERECO           |
+| TELEFONE           |
++--------------------+
+
+/*CONSTRAINT - REGRA*/
+DROP TABLE ENDERECO;
+DROP TABLE TELEFONE;
+
+/*RELAÇÃO (1,1) -> UNIQUE*/
+CREATE TABLE ENDERECO(
+IDENDERECO INT PRIMARY KEY AUTO_INCREMENT,
+RUA VARCHAR(30) NOT NULL,
+BAIRRO VARCHAR(30) NOT NULL,
+CIDADE VARCHAR(30) NOT NULL,
+ESTADO CHAR(2) NOT NULL,
+ID_CLIENTE INT UNIQUE, 
+FOREIGN KEY(ID_CLIENTE)
+REFERENCES CLIENTE(IDCLIENTE)
+);
+
+/*RELAÇÃO (1,N) -> SEM UNIQUE*/
+CREATE TABLE TELEFONE(
+IDTELEFONE INT PRIMARY KEY AUTO_INCREMENT,
+TIPO ENUM('RES','CEL','COM'),
+NUMERO VARCHAR(10),
+ID_CLIENTE INT, 
+FOREIGN KEY(ID_CLIENTE)
+REFERENCES CLIENTE(IDCLIENTE)
+);
+
+DESC ENDERECO;
++------------+-------------+------+-----+---------+----------------+
+| Field      | Type        | Null | Key | Default | Extra          |
++------------+-------------+------+-----+---------+----------------+
+| IDENDERECO | int         | NO   | PRI | NULL    | auto_increment |
+| RUA        | varchar(30) | NO   |     | NULL    |                |
+| BAIRRO     | varchar(30) | NO   |     | NULL    |                |
+| CIDADE     | varchar(30) | NO   |     | NULL    |                |
+| ESTADO     | char(2)     | NO   |     | NULL    |                |
+| ID_CLIENTE | int         | YES  | UNI | NULL    |                |
++------------+-------------+------+-----+---------+----------------+
+
+DESC TELEFONE;
++------------+-------------------------+------+-----+---------+----------------+
+| Field      | Type                    | Null | Key | Default | Extra          |
++------------+-------------------------+------+-----+---------+----------------+
+| IDTELEFONE | int                     | NO   | PRI | NULL    | auto_increment |
+| TIPO       | enum('RES','CEL','COM') | YES  |     | NULL    |                |
+| NUMERO     | varchar(10)             | YES  |     | NULL    |                |
+| ID_CLIENTE | int                     | YES  | MUL | NULL    |                |
++------------+-------------------------+------+-----+---------+----------------+
