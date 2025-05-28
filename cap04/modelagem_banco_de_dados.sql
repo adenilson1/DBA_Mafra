@@ -365,3 +365,85 @@ SELECT * FROM TELEFONE;
 
 
 /*NOTA: A PARTE N DO RELACIONAMENTO PODE SE REPETIR*/
+
+/*
+PARTES DE UMA QUERY: SELEÇÃO EO PROJEÇÃO E JUNÇÃO
+*/
+
+/*PROJEÇÃO:
+É TUDO QUE SE DESEJA VER NA TELA - COMANDO SELECT 
+*/
+
+SELECT * FROM TELEFONE;
++------------+------+----------+------------+
+| IDTELEFONE | TIPO | NUMERO   | ID_CLIENTE |
++------------+------+----------+------------+
+|          1 | CEL  | 78458743 |          5 |
+|          2 | RES  | 56576876 |          5 |
+|          3 | COM  | 87866896 |          1 |
+|          4 | RES  | 54768899 |          2 |
+|          5 | CEL  | 99667587 |          1 |
+|          6 | CEL  | 78989765 |          3 |
+|          7 | CEL  | 99766676 |          3 |
+|          8 | COM  | 66687899 |          1 |
+|          9 | RES  | 89986668 |          5 |
+|         10 | CEL  | 88687909 |          2 |
++------------+------+----------+------------+
+
+SELECT TIPO, NUMERO FROM TELEFONE;
++------+----------+
+| TIPO | NUMERO   |
++------+----------+
+| CEL  | 78458743 |
+| RES  | 56576876 |
+| COM  | 87866896 |
+| RES  | 54768899 |
+| CEL  | 99667587 |
+| CEL  | 78989765 |
+| CEL  | 99766676 |
+| COM  | 66687899 |
+| RES  | 89986668 |
+| CEL  | 88687909 |
++------+----------+
+
+SELECT NOW() AS DATA_ATUAL;
++---------------------+
+| DATA_ATUAL          |
++---------------------+
+| 2025-05-28 20:46:17 |
++---------------------+
+
+SELECT 2 + 2 AS SOMA;
++------+
+| SOMA |
++------+
+|    4 |
++------+
+
+/* SELEÇÃO:
+FILTRA UMA PESQUISA NO BANCO DE DADOS - COMANDO WHERE.
+É UM SUBCONJUNTO DO CONJUNTO TOTAL DE REGISTROS DE 
+UMA TABELA
+*/
+
+SELECT NOME, SEXO, EMAIL FROM CLIENTE
+WHERE SEXO = 'F';
++-------+------+---------------+
+| NOME  | SEXO | EMAIL         |
++-------+------+---------------+
+| ANA   | F    | ANA@IG.COM    |
+| CLARA | F    | NULL          |
+| CELIA | F    | CELIA@IG.COME |
++-------+------+---------------+
+
+SELECT NUMERO FROM TELEFONE
+WHERE TIPO = 'CEL';
++----------+
+| NUMERO   |
++----------+
+| 78458743 |
+| 99667587 |
+| 78989765 |
+| 99766676 |
+| 88687909 |
++----------+
