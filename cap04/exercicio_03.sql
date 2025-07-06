@@ -421,3 +421,137 @@ GROUP BY SEXO;
 |          9 | M    |
 |         11 | F    |
 +------------+------+
+
+SELECT * FROM CLIENTE;
+
+SELECT C.IDCLIENTE, C.NOME,C.SEXO, C.EMAIL, E.RUA, E.BAIRRO, E.CIDADE, E.ESTADO, T.TIPO, T.NUMERO
+FROM CLIENTE C 
+INNER JOIN ENDERECO E 
+ON C.IDCLIENTE = E.ID_CLIENTE
+INNER JOIN TELEFONE T 
+ON C.IDCLIENTE = T.ID_CLIENTE
+WHERE (C.SEXO = 'F' AND C.SEXO = 'F') AND (E.BAIRRO = 'CENTRO' AND E.CIDADE = 'RIO DE JANEIRO')
+AND (T.TIPO = 'COM' OR T.TIPO = 'RES');
++-----------+---------+------+-------------------+------------------+--------+----------------+--------+------+----------+
+| IDCLIENTE | NOME    | SEXO | EMAIL             | RUA              | BAIRRO | CIDADE         | ESTADO | TIPO | NUMERO   |
++-----------+---------+------+-------------------+------------------+--------+----------------+--------+------+----------+
+|        22 | GEOVANA | F    | NULL              | RUA VISCONDESSA  | CENTRO | RIO DE JANEIRO | RJ     | COM  | 88965676 |
+|        30 | CARMEM  | F    | CARMEM@IG.COM     | RUA GERONIMO     | CENTRO | RIO DE JANEIRO | RJ     | RES  | 89766554 |
+|        30 | CARMEM  | F    | CARMEM@IG.COM     | RUA GERONIMO     | CENTRO | RIO DE JANEIRO | RJ     | RES  | 77755785 |
+|        31 | ADRIANA | F    | ADRIANA@GMAIL.COM | RUA GOMES FREIRE | CENTRO | RIO DE JANEIRO | RJ     | RES  | 44522578 |
+|        31 | ADRIANA | F    | ADRIANA@GMAIL.COM | RUA GOMES FREIRE | CENTRO | RIO DE JANEIRO | RJ     | COM  | 88965679 |
++-----------+---------+------+-------------------+------------------+--------+----------------+--------+------+----------+
+
+SELECT C.IDCLIENTE,C.EMAIL
+FROM CLIENTE C 
+INNER JOIN ENDERECO E 
+ON C.IDCLIENTE = E.ID_CLIENTE
+INNER JOIN TELEFONE T 
+ON C.IDCLIENTE = T.ID_CLIENTE
+WHERE (C.SEXO = 'F' AND C.SEXO = 'F') AND (E.BAIRRO = 'CENTRO' AND E.CIDADE = 'RIO DE JANEIRO')
+AND (T.TIPO = 'COM' OR T.TIPO = 'RES');
+
++-----------+-------------------+
+| IDCLIENTE | EMAIL             |
++-----------+-------------------+
+|        22 | NULL              |
+|        30 | CARMEM@IG.COM     |
+|        30 | CARMEM@IG.COM     |
+|        31 | ADRIANA@GMAIL.COM |
+|        31 | ADRIANA@GMAIL.COM |
++-----------+-------------------+
+
+/* PARA UMA CAMPANHA DE PRODUTOS DE BELLEZA, O COMERCIAL SOLICITOU UM 
+RELATORIO COM O NOME, EMAIL E TELEFONE CELULAR
+DAS MULHERES QUE MORAM NO ESTADO DE SAO PAULO VOCÊ TERÁ QUE 
+PASSA A QUERY PARA GERAR O RELATORIO PARA O PROGRAMADOR*/
+
+SELECT C.NOME, C.EMAIL, T.TIPO, T.NUMERO, E.ESTADO
+FROM CLIENTE C 
+INNER JOIN TELEFONE T 
+ON C.IDCLIENTE = T.ID_CLIENTE
+INNER JOIN ENDERECO E 
+ON C.IDCLIENTE = E.ID_CLIENTE;
++---------+-------------------+------+-----------+--------+
+| NOME    | EMAIL             | TIPO | NUMERO    | ESTADO |
++---------+-------------------+------+-----------+--------+
+| JORGE   | JORGE@IG.COM      | CEL  | 78458743  | ES     |
+| JORGE   | JORGE@IG.COM      | RES  | 56576876  | ES     |
+| JOAO    | JOAO@IG.COM       | COM  | 87866896  | RJ     |
+| CARLOS  | CARLOS@IG.COM     | RES  | 54768899  | RJ     |
+| JOAO    | JOAO@IG.COM       | CEL  | 99667587  | RJ     |
+| ANA     | ANA@IG.COM        | CEL  | 78989765  | SP     |
+| ANA     | ANA@IG.COM        | CEL  | 99766676  | SP     |
+| JOAO    | JOAO@IG.COM       | COM  | 66687899  | RJ     |
+| JORGE   | JORGE@IG.COM      | RES  | 89986668  | ES     |
+| CARLOS  | CARLOS@IG.COM     | CEL  | 88687909  | RJ     |
+| FLAVIO  | FLAVIO@IG.COM     | RES  | 68976565  | MG     |
+| FLAVIO  | FLAVIO@IG.COM     | CEL  | 996556675 | MG     |
+| GEOVANA | NULL              | CEL  | 33567765  | RJ     |
+| GEOVANA | NULL              | CEL  | 88668786  | RJ     |
+| GEOVANA | NULL              | COM  | 88965676  | RJ     |
+| KARLA   | KARLA@GMAIL.COM   | COM  | 89966809  | RJ     |
+| DANIELE | DANIELE@IG.COM    | COM  | 88679978  | ES     |
+| EDUARDO | NULL              | CEL  | 99655768  | PR     |
+| ANTONIO | ANTONIO@IG.COM    | COM  | 89955665  | SP     |
+| ANTONIO | ANTONIO@UOL.COM   | CEL  | 77455786  | PR     |
+| ELAINE  | ELAINE@GLOBO.COM  | RES  | 55689654  | SP     |
+| CARMEM  | CARMEM@IG.COM     | RES  | 89766554  | RJ     |
+| CARMEM  | CARMEM@IG.COM     | RES  | 77755785  | RJ     |
+| ADRIANA | ADRIANA@GMAIL.COM | RES  | 44522578  | RJ     |
+| ADRIANA | ADRIANA@GMAIL.COM | COM  | 88965679  | RJ     |
+| JOICE   | JOICE@GMAIL.COM   | CEL  | 88965679  | RJ     |
++---------+-------------------+------+-----------+--------+
+
+SELECT C.NOME, C.EMAIL, T.TIPO, T.NUMERO, E.ESTADO
+FROM CLIENTE C 
+INNER JOIN TELEFONE T 
+ON C.IDCLIENTE = T.ID_CLIENTE
+INNER JOIN ENDERECO E 
+ON C.IDCLIENTE = E.ID_CLIENTE
+WHERE C.SEXO = 'F';
++---------+-------------------+------+----------+--------+
+| NOME    | EMAIL             | TIPO | NUMERO   | ESTADO |
++---------+-------------------+------+----------+--------+
+| ANA     | ANA@IG.COM        | CEL  | 78989765 | SP     |
+| ANA     | ANA@IG.COM        | CEL  | 99766676 | SP     |
+| GEOVANA | NULL              | CEL  | 33567765 | RJ     |
+| GEOVANA | NULL              | CEL  | 88668786 | RJ     |
+| GEOVANA | NULL              | COM  | 88965676 | RJ     |
+| KARLA   | KARLA@GMAIL.COM   | COM  | 89966809 | RJ     |
+| DANIELE | DANIELE@IG.COM    | COM  | 88679978 | ES     |
+| ELAINE  | ELAINE@GLOBO.COM  | RES  | 55689654 | SP     |
+| CARMEM  | CARMEM@IG.COM     | RES  | 89766554 | RJ     |
+| CARMEM  | CARMEM@IG.COM     | RES  | 77755785 | RJ     |
+| ADRIANA | ADRIANA@GMAIL.COM | RES  | 44522578 | RJ     |
+| ADRIANA | ADRIANA@GMAIL.COM | COM  | 88965679 | RJ     |
+| JOICE   | JOICE@GMAIL.COM   | CEL  | 88965679 | RJ     |
++---------+-------------------+------+----------+--------+
+
+SELECT C.NOME, C.EMAIL,T.NUMERO, E.ESTADO
+FROM CLIENTE C 
+INNER JOIN TELEFONE T 
+ON C.IDCLIENTE = T.ID_CLIENTE
+INNER JOIN ENDERECO E 
+ON C.IDCLIENTE = E.ID_CLIENTE
+WHERE C.SEXO = 'F' AND E.ESTADO = 'SP' AND T.TIPO = 'CEL';
++------+------------+------+----------+--------+
+| NOME | EMAIL      | TIPO | NUMERO   | ESTADO |
++------+------------+------+----------+--------+
+| ANA  | ANA@IG.COM | CEL  | 78989765 | SP     |
+| ANA  | ANA@IG.COM | CEL  | 99766676 | SP     |
++------+------------+------+----------+--------+
+
+SELECT C.NOME, C.EMAIL,T.NUMERO AS CELULAR
+FROM CLIENTE C 
+INNER JOIN TELEFONE T 
+ON C.IDCLIENTE = T.ID_CLIENTE
+INNER JOIN ENDERECO E 
+ON C.IDCLIENTE = E.ID_CLIENTE
+WHERE C.SEXO = 'F' AND E.ESTADO = 'SP' AND T.TIPO = 'CEL';
++------+------------+----------+
+| NOME | EMAIL      | CELULAR  |
++------+------------+----------+
+| ANA  | ANA@IG.COM | 78989765 |
+| ANA  | ANA@IG.COM | 99766676 |
++------+------------+----------+
