@@ -1,0 +1,46 @@
+/*
+FUNÇOES - IFNULL
+FUNÇÃO -> BLOCO DE CODIGOS QUE EXECUTA UMA AÇÃO
+*/
+USE COMERCIO;
+SHOW TABLES;
+
+SELECT NOW(); /* FUNÇÃO QUE TRAZ A HORA E A DATA ATUAL*/
+/*NOME, EMIAL, NUMERO, ESTADO*/
+
+SELECT C.NOME, C.EMAIL, T.NUMERO, E.ESTADO 
+FROM CLIENTE C 
+INNER JOIN TELEFONE T
+ON C.IDCLIENTE = T.ID_CLIENTE
+INNER JOIN ENDERECO E 
+ON C.IDCLIENTE = E.ID_CLIENTE;
++---------+-------------------+-----------+--------+
+| NOME    | EMAIL             | NUMERO    | ESTADO |
++---------+-------------------+-----------+--------+
+| JORGE   | JORGE@IG.COM      | 78458743  | ES     |
+| JORGE   | JORGE@IG.COM      | 56576876  | ES     |
+| JOAO    | JOAO@IG.COM       | 87866896  | RJ     |
+| CARLOS  | CARLOS@IG.COM     | 54768899  | RJ     |
+| JOAO    | JOAO@IG.COM       | 99667587  | RJ     |
+| ANA     | ANA@IG.COM        | 78989765  | SP     |
+| ANA     | ANA@IG.COM        | 99766676  | SP     |
+| JOAO    | JOAO@IG.COM       | 66687899  | RJ     |
+| JORGE   | JORGE@IG.COM      | 89986668  | ES     |
+| CARLOS  | CARLOS@IG.COM     | 88687909  | RJ     |
+| FLAVIO  | FLAVIO@IG.COM     | 68976565  | MG     |
+| FLAVIO  | FLAVIO@IG.COM     | 996556675 | MG     |
+| GEOVANA | NULL              | 33567765  | RJ     |
+| GEOVANA | NULL              | 88668786  | RJ     |
+| GEOVANA | NULL              | 88965676  | RJ     |
+| KARLA   | KARLA@GMAIL.COM   | 89966809  | RJ     |
+| DANIELE | DANIELE@IG.COM    | 88679978  | ES     |
+| EDUARDO | NULL              | 99655768  | PR     |
+| ANTONIO | ANTONIO@IG.COM    | 89955665  | SP     |
+| ANTONIO | ANTONIO@UOL.COM   | 77455786  | PR     |
+| ELAINE  | ELAINE@GLOBO.COM  | 55689654  | SP     |
+| CARMEM  | CARMEM@IG.COM     | 89766554  | RJ     |
+| CARMEM  | CARMEM@IG.COM     | 77755785  | RJ     |
+| ADRIANA | ADRIANA@GMAIL.COM | 44522578  | RJ     |
+| ADRIANA | ADRIANA@GMAIL.COM | 88965679  | RJ     |
+| JOICE   | JOICE@GMAIL.COM   | 88965679  | RJ     |
++---------+-------------------+-----------+--------+
