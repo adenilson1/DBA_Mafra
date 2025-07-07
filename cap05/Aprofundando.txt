@@ -44,3 +44,252 @@ ON C.IDCLIENTE = E.ID_CLIENTE;
 | ADRIANA | ADRIANA@GMAIL.COM | 88965679  | RJ     |
 | JOICE   | JOICE@GMAIL.COM   | 88965679  | RJ     |
 +---------+-------------------+-----------+--------+
+
+/*FUNÇÃOIFNULL*/
+SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| COMERCIO           |
+| PROJETO            |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+
+USE COMERCIO;
+
+SHOW TABLES;
++--------------------+
+| Tables_in_COMERCIO |
++--------------------+
+| CLIENTE            |
+| ENDERECO           |
+| PRODUTO            |
+| TELEFONE           |
++--------------------+
+
+SELECT C.NOME,
+       IFNULL(C.EMAIL,"**********") AS "E-MAIL",
+	   T.NUMERO,
+	   E.ESTADO 
+FROM CLIENTE C 
+INNER JOIN TELEFONE T
+ON C.IDCLIENTE = T.ID_CLIENTE
+INNER JOIN ENDERECO E 
+ON C.IDCLIENTE = E.ID_CLIENTE;
++---------+-------------------+-----------+--------+
+| NOME    | E-MAIL            | NUMERO    | ESTADO |
++---------+-------------------+-----------+--------+
+| JORGE   | JORGE@IG.COM      | 78458743  | ES     |
+| JORGE   | JORGE@IG.COM      | 56576876  | ES     |
+| JOAO    | JOAO@IG.COM       | 87866896  | RJ     |
+| CARLOS  | CARLOS@IG.COM     | 54768899  | RJ     |
+| JOAO    | JOAO@IG.COM       | 99667587  | RJ     |
+| ANA     | ANA@IG.COM        | 78989765  | SP     |
+| ANA     | ANA@IG.COM        | 99766676  | SP     |
+| JOAO    | JOAO@IG.COM       | 66687899  | RJ     |
+| JORGE   | JORGE@IG.COM      | 89986668  | ES     |
+| CARLOS  | CARLOS@IG.COM     | 88687909  | RJ     |
+| FLAVIO  | FLAVIO@IG.COM     | 68976565  | MG     |
+| FLAVIO  | FLAVIO@IG.COM     | 996556675 | MG     |
+| GEOVANA | **********        | 33567765  | RJ     |
+| GEOVANA | **********        | 88668786  | RJ     |
+| GEOVANA | **********        | 88965676  | RJ     |
+| KARLA   | KARLA@GMAIL.COM   | 89966809  | RJ     |
+| DANIELE | DANIELE@IG.COM    | 88679978  | ES     |
+| EDUARDO | **********        | 99655768  | PR     |
+| ANTONIO | ANTONIO@IG.COM    | 89955665  | SP     |
+| ANTONIO | ANTONIO@UOL.COM   | 77455786  | PR     |
+| ELAINE  | ELAINE@GLOBO.COM  | 55689654  | SP     |
+| CARMEM  | CARMEM@IG.COM     | 89766554  | RJ     |
+| CARMEM  | CARMEM@IG.COM     | 77755785  | RJ     |
+| ADRIANA | ADRIANA@GMAIL.COM | 44522578  | RJ     |
+| ADRIANA | ADRIANA@GMAIL.COM | 88965679  | RJ     |
+| JOICE   | JOICE@GMAIL.COM   | 88965679  | RJ     |
++---------+-------------------+-----------+--------+
+
+/* VIEWS*/
+
+SELECT C.NOME,
+       C.SEXO,
+	   IFNULL(C.EMAIL,"***********") AS "E-MAIL",
+	   T.TIPO,
+	   T.NUMERO, 
+	   E.BAIRRO, 
+	   E.CIDADE, E.
+	   ESTADO
+FROM CLIENTE C
+INNER JOIN TELEFONE T 
+ON C.IDCLIENTE = T.ID_CLIENTE
+INNER JOIN ENDERECO E 
+ON C.IDCLIENTE = E.ID_CLIENTE;
++---------+------+-------------------+------+-----------+------------+----------------+--------+
+| NOME    | SEXO | E-MAIL            | TIPO | NUMERO    | BAIRRO     | CIDADE         | ESTADO |
++---------+------+-------------------+------+-----------+------------+----------------+--------+
+| JORGE   | M    | JORGE@IG.COM      | CEL  | 78458743  | CENTRO     | VITORIA        | ES     |
+| JORGE   | M    | JORGE@IG.COM      | RES  | 56576876  | CENTRO     | VITORIA        | ES     |
+| JOAO    | M    | JOAO@IG.COM       | COM  | 87866896  | CENTRO     | RIO DE JANEIRO | RJ     |
+| CARLOS  | M    | CARLOS@IG.COM     | RES  | 54768899  | ESTACIO    | RIO DE JANEIRO | RJ     |
+| JOAO    | M    | JOAO@IG.COM       | CEL  | 99667587  | CENTRO     | RIO DE JANEIRO | RJ     |
+| ANA     | F    | ANA@IG.COM        | CEL  | 78989765  | JARDINS    | SAO PAULO      | SP     |
+| ANA     | F    | ANA@IG.COM        | CEL  | 99766676  | JARDINS    | SAO PAULO      | SP     |
+| JOAO    | M    | JOAO@IG.COM       | COM  | 66687899  | CENTRO     | RIO DE JANEIRO | RJ     |
+| JORGE   | M    | JORGE@IG.COM      | RES  | 89986668  | CENTRO     | VITORIA        | ES     |
+| CARLOS  | M    | CARLOS@IG.COM     | CEL  | 88687909  | ESTACIO    | RIO DE JANEIRO | RJ     |
+| FLAVIO  | M    | FLAVIO@IG.COM     | RES  | 68976565  | CASCADURA  | B. HORIZONTE   | MG     |
+| FLAVIO  | M    | FLAVIO@IG.COM     | CEL  | 996556675 | CASCADURA  | B. HORIZONTE   | MG     |
+| GEOVANA | F    | ***********       | CEL  | 33567765  | CENTRO     | RIO DE JANEIRO | RJ     |
+| GEOVANA | F    | ***********       | CEL  | 88668786  | CENTRO     | RIO DE JANEIRO | RJ     |
+| GEOVANA | F    | ***********       | COM  | 88965676  | CENTRO     | RIO DE JANEIRO | RJ     |
+| KARLA   | F    | KARLA@GMAIL.COM   | COM  | 89966809  | COPACABANA | RIO DE JANEIRO | RJ     |
+| DANIELE | F    | DANIELE@IG.COM    | COM  | 88679978  | CENTRO     | VITORIA        | ES     |
+| EDUARDO | M    | ***********       | CEL  | 99655768  | CENTRO     | CURITIBA       | PR     |
+| ANTONIO | M    | ANTONIO@IG.COM    | COM  | 89955665  | JARDINS    | SAO PAULO      | SP     |
+| ANTONIO | M    | ANTONIO@UOL.COM   | CEL  | 77455786  | BOM RETIRO | CURITIBA       | PR     |
+| ELAINE  | F    | ELAINE@GLOBO.COM  | RES  | 55689654  | LAPA       | SAO PAULO      | SP     |
+| CARMEM  | F    | CARMEM@IG.COM     | RES  | 89766554  | CENTRO     | RIO DE JANEIRO | RJ     |
+| CARMEM  | F    | CARMEM@IG.COM     | RES  | 77755785  | CENTRO     | RIO DE JANEIRO | RJ     |
+| ADRIANA | F    | ADRIANA@GMAIL.COM | RES  | 44522578  | CENTRO     | RIO DE JANEIRO | RJ     |
+| ADRIANA | F    | ADRIANA@GMAIL.COM | COM  | 88965679  | CENTRO     | RIO DE JANEIRO | RJ     |
+| JOICE   | F    | JOICE@GMAIL.COM   | CEL  | 88965679  | CENTRO     | RIO DE JANEIRO | RJ     |
++---------+------+-------------------+------+-----------+------------+----------------+--------+
+CREATE VIEW RELATORIO AS 
+SELECT C.NOME,
+       C.SEXO,
+	   IFNULL(C.EMAIL,"***********") AS "E-MAIL",
+	   T.TIPO,
+	   T.NUMERO, 
+	   E.BAIRRO, 
+	   E.CIDADE, E.
+	   ESTADO
+FROM CLIENTE C
+INNER JOIN TELEFONE T 
+ON C.IDCLIENTE = T.ID_CLIENTE
+INNER JOIN ENDERECO E 
+ON C.IDCLIENTE = E.ID_CLIENTE;
+
+SELECT * FROM RELATORIO;
++---------+------+-------------------+------+-----------+------------+----------------+--------+
+| NOME    | SEXO | E-MAIL            | TIPO | NUMERO    | BAIRRO     | CIDADE         | ESTADO |
++---------+------+-------------------+------+-----------+------------+----------------+--------+
+| JORGE   | M    | JORGE@IG.COM      | CEL  | 78458743  | CENTRO     | VITORIA        | ES     |
+| JORGE   | M    | JORGE@IG.COM      | RES  | 56576876  | CENTRO     | VITORIA        | ES     |
+| JOAO    | M    | JOAO@IG.COM       | COM  | 87866896  | CENTRO     | RIO DE JANEIRO | RJ     |
+| CARLOS  | M    | CARLOS@IG.COM     | RES  | 54768899  | ESTACIO    | RIO DE JANEIRO | RJ     |
+| JOAO    | M    | JOAO@IG.COM       | CEL  | 99667587  | CENTRO     | RIO DE JANEIRO | RJ     |
+| ANA     | F    | ANA@IG.COM        | CEL  | 78989765  | JARDINS    | SAO PAULO      | SP     |
+| ANA     | F    | ANA@IG.COM        | CEL  | 99766676  | JARDINS    | SAO PAULO      | SP     |
+| JOAO    | M    | JOAO@IG.COM       | COM  | 66687899  | CENTRO     | RIO DE JANEIRO | RJ     |
+| JORGE   | M    | JORGE@IG.COM      | RES  | 89986668  | CENTRO     | VITORIA        | ES     |
+| CARLOS  | M    | CARLOS@IG.COM     | CEL  | 88687909  | ESTACIO    | RIO DE JANEIRO | RJ     |
+| FLAVIO  | M    | FLAVIO@IG.COM     | RES  | 68976565  | CASCADURA  | B. HORIZONTE   | MG     |
+| FLAVIO  | M    | FLAVIO@IG.COM     | CEL  | 996556675 | CASCADURA  | B. HORIZONTE   | MG     |
+| GEOVANA | F    | ***********       | CEL  | 33567765  | CENTRO     | RIO DE JANEIRO | RJ     |
+| GEOVANA | F    | ***********       | CEL  | 88668786  | CENTRO     | RIO DE JANEIRO | RJ     |
+| GEOVANA | F    | ***********       | COM  | 88965676  | CENTRO     | RIO DE JANEIRO | RJ     |
+| KARLA   | F    | KARLA@GMAIL.COM   | COM  | 89966809  | COPACABANA | RIO DE JANEIRO | RJ     |
+| DANIELE | F    | DANIELE@IG.COM    | COM  | 88679978  | CENTRO     | VITORIA        | ES     |
+| EDUARDO | M    | ***********       | CEL  | 99655768  | CENTRO     | CURITIBA       | PR     |
+| ANTONIO | M    | ANTONIO@IG.COM    | COM  | 89955665  | JARDINS    | SAO PAULO      | SP     |
+| ANTONIO | M    | ANTONIO@UOL.COM   | CEL  | 77455786  | BOM RETIRO | CURITIBA       | PR     |
+| ELAINE  | F    | ELAINE@GLOBO.COM  | RES  | 55689654  | LAPA       | SAO PAULO      | SP     |
+| CARMEM  | F    | CARMEM@IG.COM     | RES  | 89766554  | CENTRO     | RIO DE JANEIRO | RJ     |
+| CARMEM  | F    | CARMEM@IG.COM     | RES  | 77755785  | CENTRO     | RIO DE JANEIRO | RJ     |
+| ADRIANA | F    | ADRIANA@GMAIL.COM | RES  | 44522578  | CENTRO     | RIO DE JANEIRO | RJ     |
+| ADRIANA | F    | ADRIANA@GMAIL.COM | COM  | 88965679  | CENTRO     | RIO DE JANEIRO | RJ     |
+| JOICE   | F    | JOICE@GMAIL.COM   | CEL  | 88965679  | CENTRO     | RIO DE JANEIRO | RJ     |
++---------+------+-------------------+------+-----------+------------+----------------+--------+
+
+/*LOCALICZAR VIEWS NO BANCO DE DADOS
+SHOW DATABASES -> VE BANCOS 
+SHOW TABLES -> VE TABELAS DE UM BANCO
+E PARA VE AS VIEWS (NSO EXISTE SHOW VIEWS)
+
+A VIEWS SAO VISTAS PELO COMANDO SHOW TABLES
+AS VIEWS SÃO TABELAS VIRTUAIS DENTRO DO BANCO (VIEW RELATORIO)
+*/
+
+SHOW TABLES;
++--------------------+
+| Tables_in_COMERCIO |
++--------------------+
+| CLIENTE            |
+| ENDERECO           |
+| PRODUTO            |
+| RELATORIO          |
+| TELEFONE           |
++--------------------+
+/*PAGANDO UMA VIEW*/
+
+DROP VIEW RELATORIO;
+SHOW TABLES;
++--------------------+
+| Tables_in_COMERCIO |
++--------------------+
+| CLIENTE            |
+| ENDERECO           |
+| PRODUTO            |
+| TELEFONE           |
++--------------------+
+
+/* FORMA ADEQUANDA PARA CRIAR VIEWS É INTERESSANTE COLOCAR PREFIXO, NESSE CASO A LETRA V_*/
+
+ CREATE VIEW V_RELATORIO AS 
+SELECT C.NOME,
+       C.SEXO,
+	   IFNULL(C.EMAIL,"***********") AS "E-MAIL",
+	   T.TIPO,
+	   T.NUMERO, 
+	   E.BAIRRO, 
+	   E.CIDADE, E.
+	   ESTADO
+FROM CLIENTE C
+INNER JOIN TELEFONE T 
+ON C.IDCLIENTE = T.ID_CLIENTE
+INNER JOIN ENDERECO E 
+ON C.IDCLIENTE = E.ID_CLIENTE;
+
+SELECT * FROM V_RELATORIO;
++---------+------+-------------------+------+-----------+------------+----------------+--------+
+| NOME    | SEXO | E-MAIL            | TIPO | NUMERO    | BAIRRO     | CIDADE         | ESTADO |
++---------+------+-------------------+------+-----------+------------+----------------+--------+
+| JORGE   | M    | JORGE@IG.COM      | CEL  | 78458743  | CENTRO     | VITORIA        | ES     |
+| JORGE   | M    | JORGE@IG.COM      | RES  | 56576876  | CENTRO     | VITORIA        | ES     |
+| JOAO    | M    | JOAO@IG.COM       | COM  | 87866896  | CENTRO     | RIO DE JANEIRO | RJ     |
+| CARLOS  | M    | CARLOS@IG.COM     | RES  | 54768899  | ESTACIO    | RIO DE JANEIRO | RJ     |
+| JOAO    | M    | JOAO@IG.COM       | CEL  | 99667587  | CENTRO     | RIO DE JANEIRO | RJ     |
+| ANA     | F    | ANA@IG.COM        | CEL  | 78989765  | JARDINS    | SAO PAULO      | SP     |
+| ANA     | F    | ANA@IG.COM        | CEL  | 99766676  | JARDINS    | SAO PAULO      | SP     |
+| JOAO    | M    | JOAO@IG.COM       | COM  | 66687899  | CENTRO     | RIO DE JANEIRO | RJ     |
+| JORGE   | M    | JORGE@IG.COM      | RES  | 89986668  | CENTRO     | VITORIA        | ES     |
+| CARLOS  | M    | CARLOS@IG.COM     | CEL  | 88687909  | ESTACIO    | RIO DE JANEIRO | RJ     |
+| FLAVIO  | M    | FLAVIO@IG.COM     | RES  | 68976565  | CASCADURA  | B. HORIZONTE   | MG     |
+| FLAVIO  | M    | FLAVIO@IG.COM     | CEL  | 996556675 | CASCADURA  | B. HORIZONTE   | MG     |
+| GEOVANA | F    | ***********       | CEL  | 33567765  | CENTRO     | RIO DE JANEIRO | RJ     |
+| GEOVANA | F    | ***********       | CEL  | 88668786  | CENTRO     | RIO DE JANEIRO | RJ     |
+| GEOVANA | F    | ***********       | COM  | 88965676  | CENTRO     | RIO DE JANEIRO | RJ     |
+| KARLA   | F    | KARLA@GMAIL.COM   | COM  | 89966809  | COPACABANA | RIO DE JANEIRO | RJ     |
+| DANIELE | F    | DANIELE@IG.COM    | COM  | 88679978  | CENTRO     | VITORIA        | ES     |
+| EDUARDO | M    | ***********       | CEL  | 99655768  | CENTRO     | CURITIBA       | PR     |
+| ANTONIO | M    | ANTONIO@IG.COM    | COM  | 89955665  | JARDINS    | SAO PAULO      | SP     |
+| ANTONIO | M    | ANTONIO@UOL.COM   | CEL  | 77455786  | BOM RETIRO | CURITIBA       | PR     |
+| ELAINE  | F    | ELAINE@GLOBO.COM  | RES  | 55689654  | LAPA       | SAO PAULO      | SP     |
+| CARMEM  | F    | CARMEM@IG.COM     | RES  | 89766554  | CENTRO     | RIO DE JANEIRO | RJ     |
+| CARMEM  | F    | CARMEM@IG.COM     | RES  | 77755785  | CENTRO     | RIO DE JANEIRO | RJ     |
+| ADRIANA | F    | ADRIANA@GMAIL.COM | RES  | 44522578  | CENTRO     | RIO DE JANEIRO | RJ     |
+| ADRIANA | F    | ADRIANA@GMAIL.COM | COM  | 88965679  | CENTRO     | RIO DE JANEIRO | RJ     |
+| JOICE   | F    | JOICE@GMAIL.COM   | CEL  | 88965679  | CENTRO     | RIO DE JANEIRO | RJ     |
++---------+------+-------------------+------+-----------+------------+----------------+--------+
+
+SHOW TABLES;
++--------------------+
+| Tables_in_COMERCIO |
++--------------------+
+| CLIENTE            |
+| ENDERECO           |
+| PRODUTO            |
+| TELEFONE           |
+| V_RELATORIO        |
++--------------------+
