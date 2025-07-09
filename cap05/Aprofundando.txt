@@ -617,3 +617,434 @@ WHERE SEXO = 'F';
 | ADRIANA | F    | ADRIANA@GMAIL.COM | COM  | 88965679 | CENTRO     | RIO DE JANEIRO | RJ     |
 | JOICE   | F    | JOICE@GMAIL.COM   | CEL  | 88965679 | CENTRO     | RIO DE JANEIRO | RJ     |
 +---------+------+-------------------+------+----------+------------+----------------+--------+
+
+/*ORDENANDO DADOS - COMANDO ORDER BY*/
+USE COMERCIO;
+
+SHOW TABLES;
+
+CREATE TABLE ALUNOS(
+	NUMERO INT,
+	NOME VARCHAR(30)
+);
+
+DESC ALUNOS;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| NUMERO | int         | YES  |     | NULL    |       |
+| NOME   | varchar(30) | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+
+INSERT INTO ALUNOS VALUES(1,'JOAO');
+INSERT INTO ALUNOS VALUES(1,'MARIA');
+INSERT INTO ALUNOS VALUES(2,'JOAO');
+INSERT INTO ALUNOS VALUES(2,'ZOE');
+INSERT INTO ALUNOS VALUES(3,'ANDRE');
+INSERT INTO ALUNOS VALUES(1,'CLARA');
+INSERT INTO ALUNOS VALUES(4,'CLARA');
+INSERT INTO ALUNOS VALUES(5,'MAFRA');
+INSERT INTO ALUNOS VALUES(9,'JANAINA');
+INSERT INTO ALUNOS VALUES(1,'JANAINA');
+INSERT INTO ALUNOS VALUES(3,'MARCELO');
+INSERT INTO ALUNOS VALUES(4,'GEOVANI');
+INSERT INTO ALUNOS VALUES(5,'ANTONIO');
+INSERT INTO ALUNOS VALUES(6,'ANA');
+INSERT INTO ALUNOS VALUES(6,'VIVIANE');
+
+SELECT * FROM ALUNOS;
++--------+---------+
+| NUMERO | NOME    |
++--------+---------+
+|      1 | JOAO    |
+|      1 | MARIA   |
+|      2 | JOAO    |
+|      2 | ZOE     |
+|      3 | ANDRE   |
+|      1 | CLARA   |
+|      4 | CLARA   |
+|      5 | MAFRA   |
+|      9 | JANAINA |
+|      1 | JANAINA |
+|      3 | MARCELO |
+|      4 | GEOVANI |
+|      5 | ANTONIO |
+|      6 | ANA     |
+|      6 | VIVIANE |
++--------+---------+
+
+SELECT * FROM ALUNOS 
+ORDER BY NUMERO;
++--------+---------+
+| NUMERO | NOME    |
++--------+---------+
+|      1 | JOAO    |
+|      1 | MARIA   |
+|      1 | CLARA   |
+|      1 | JANAINA |
+|      2 | JOAO    |
+|      2 | ZOE     |
+|      3 | ANDRE   |
+|      3 | MARCELO |
+|      4 | CLARA   |
+|      4 | GEOVANI |
+|      5 | MAFRA   |
+|      5 | ANTONIO |
+|      6 | ANA     |
+|      6 | VIVIANE |
+|      9 | JANAINA |
++--------+---------+
+
+SELECT * FROM ALUNOS 
+ORDER BY 1;
++--------+---------+
+| NUMERO | NOME    |
++--------+---------+
+|      1 | JOAO    |
+|      1 | MARIA   |
+|      1 | CLARA   |
+|      1 | JANAINA |
+|      2 | JOAO    |
+|      2 | ZOE     |
+|      3 | ANDRE   |
+|      3 | MARCELO |
+|      4 | CLARA   |
+|      4 | GEOVANI |
+|      5 | MAFRA   |
+|      5 | ANTONIO |
+|      6 | ANA     |
+|      6 | VIVIANE |
+|      9 | JANAINA |
++--------+---------+
+
+SELECT * FROM ALUNOS 
+ORDER BY 2;
++--------+---------+
+| NUMERO | NOME    |
++--------+---------+
+|      6 | ANA     |
+|      3 | ANDRE   |
+|      5 | ANTONIO |
+|      1 | CLARA   |
+|      4 | CLARA   |
+|      4 | GEOVANI |
+|      9 | JANAINA |
+|      1 | JANAINA |
+|      1 | JOAO    |
+|      2 | JOAO    |
+|      5 | MAFRA   |
+|      3 | MARCELO |
+|      1 | MARIA   |
+|      6 | VIVIANE |
+|      2 | ZOE     |
++--------+---------+
+
+/*ORDENANDO POR MAIS DE UMA COLUNA*/
+SELECT * FROM ALUNOS 
+ORDER BY NUMERO, NOME;
++--------+---------+
+| NUMERO | NOME    |
++--------+---------+
+|      1 | CLARA   |
+|      1 | JANAINA |
+|      1 | JOAO    |
+|      1 | MARIA   |
+|      2 | JOAO    |
+|      2 | ZOE     |
+|      3 | ANDRE   |
+|      3 | MARCELO |
+|      4 | CLARA   |
+|      4 | GEOVANI |
+|      5 | ANTONIO |
+|      5 | MAFRA   |
+|      6 | ANA     |
+|      6 | VIVIANE |
+|      9 | JANAINA |
++--------+---------+
+
+SELECT * FROM ALUNOS 
+ORDER BY 1, 2;
++--------+---------+
+| NUMERO | NOME    |
++--------+---------+
+|      1 | CLARA   |
+|      1 | JANAINA |
+|      1 | JOAO    |
+|      1 | MARIA   |
+|      2 | JOAO    |
+|      2 | ZOE     |
+|      3 | ANDRE   |
+|      3 | MARCELO |
+|      4 | CLARA   |
+|      4 | GEOVANI |
+|      5 | ANTONIO |
+|      5 | MAFRA   |
+|      6 | ANA     |
+|      6 | VIVIANE |
+|      9 | JANAINA |
++--------+---------+
+/* MESCLANDO ORDER BY COM PROJEÇÃO*/
+SELECT NOME FROM ALUNOS 
+ORDER BY 1, 2;
+ERROR 1054 (42S22): Unknown column '2' in 'order clause'
+
+SELECT NOME FROM ALUNOS 
+ORDER BY NUMERO, NOME;
++---------+
+| NOME    |
++---------+
+| CLARA   |
+| JANAINA |
+| JOAO    |
+| MARIA   |
+| JOAO    |
+| ZOE     |
+| ANDRE   |
+| MARCELO |
+| CLARA   |
+| GEOVANI |
+| ANTONIO |
+| MAFRA   |
+| ANA     |
+| VIVIANE |
+| JANAINA |
++---------+
+
+/* ORDER BY DESC / ASC*/
+
+SELECT * FROM ALUNOS 
+ORDER BY 1, 2;
++--------+---------+
+| NUMERO | NOME    |
++--------+---------+
+|      1 | CLARA   |
+|      1 | JANAINA |
+|      1 | JOAO    |
+|      1 | MARIA   |
+|      2 | JOAO    |
+|      2 | ZOE     |
+|      3 | ANDRE   |
+|      3 | MARCELO |
+|      4 | CLARA   |
+|      4 | GEOVANI |
+|      5 | ANTONIO |
+|      5 | MAFRA   |
+|      6 | ANA     |
+|      6 | VIVIANE |
+|      9 | JANAINA |
++--------+---------+
+
+SELECT * FROM ALUNOS 
+ORDER BY 1 ASC;
++--------+---------+
+| NUMERO | NOME    |
++--------+---------+
+|      1 | JOAO    |
+|      1 | MARIA   |
+|      1 | CLARA   |
+|      1 | JANAINA |
+|      2 | JOAO    |
+|      2 | ZOE     |
+|      3 | ANDRE   |
+|      3 | MARCELO |
+|      4 | CLARA   |
+|      4 | GEOVANI |
+|      5 | MAFRA   |
+|      5 | ANTONIO |
+|      6 | ANA     |
+|      6 | VIVIANE |
+|      9 | JANAINA |
++--------+---------+
+
+SELECT * FROM ALUNOS 
+ORDER BY 1 DESC;
++--------+---------+
+| NUMERO | NOME    |
++--------+---------+
+|      9 | JANAINA |
+|      6 | ANA     |
+|      6 | VIVIANE |
+|      5 | MAFRA   |
+|      5 | ANTONIO |
+|      4 | CLARA   |
+|      4 | GEOVANI |
+|      3 | ANDRE   |
+|      3 | MARCELO |
+|      2 | JOAO    |
+|      2 | ZOE     |
+|      1 | JOAO    |
+|      1 | MARIA   |
+|      1 | CLARA   |
+|      1 | JANAINA |
++--------+---------+
+
+SELECT * FROM ALUNOS 
+ORDER BY 1, 2 DESC ;
++--------+---------+
+| NUMERO | NOME    |
++--------+---------+
+|      1 | MARIA   |
+|      1 | JOAO    |
+|      1 | JANAINA |
+|      1 | CLARA   |
+|      2 | ZOE     |
+|      2 | JOAO    |
+|      3 | MARCELO |
+|      3 | ANDRE   |
+|      4 | GEOVANI |
+|      4 | CLARA   |
+|      5 | MAFRA   |
+|      5 | ANTONIO |
+|      6 | VIVIANE |
+|      6 | ANA     |
+|      9 | JANAINA |
++--------+---------+
+
+SELECT * FROM ALUNOS 
+ORDER BY 1 DESC, 2 DESC ;
++--------+---------+
+| NUMERO | NOME    |
++--------+---------+
+|      9 | JANAINA |
+|      6 | VIVIANE |
+|      6 | ANA     |
+|      5 | MAFRA   |
+|      5 | ANTONIO |
+|      4 | GEOVANI |
+|      4 | CLARA   |
+|      3 | MARCELO |
+|      3 | ANDRE   |
+|      2 | ZOE     |
+|      2 | JOAO    |
+|      1 | MARIA   |
+|      1 | JOAO    |
+|      1 | JANAINA |
+|      1 | CLARA   |
++--------+---------+
+
+/*ORDER BY COM JOINS*/
+
+
+SELECT 
+	C.NOME,
+	C.SEXO,
+	IFNULL(C.EMAIL, '***************') AS "E-MAIL",
+	T.TIPO,
+	T.NUMERO,
+	E.BAIRRO,
+	E.CIDADE,
+	E.ESTADO
+FROM CLIENTE C 
+INNER JOIN TELEFONE T 
+ON C.IDCLIENTE = T.ID_CLIENTE
+INNER JOIN ENDERECO E 
+ON C.IDCLIENTE = E.ID_CLIENTE;
++---------+------+-------------------+------+-----------+------------+----------------+--------+
+| NOME    | SEXO | E-MAIL            | TIPO | NUMERO    | BAIRRO     | CIDADE         | ESTADO |
++---------+------+-------------------+------+-----------+------------+----------------+--------+
+| JOSE    | M    | JORGE@IG.COM      | CEL  | 78458743  | CENTRO     | VITORIA        | ES     |
+| JOSE    | M    | JORGE@IG.COM      | RES  | 56576876  | CENTRO     | VITORIA        | ES     |
+| JOAO    | M    | JOAO@IG.COM       | COM  | 87866896  | CENTRO     | RIO DE JANEIRO | RJ     |
+| CARLOS  | M    | CARLOS@IG.COM     | RES  | 54768899  | ESTACIO    | RIO DE JANEIRO | RJ     |
+| JOAO    | M    | JOAO@IG.COM       | CEL  | 99667587  | CENTRO     | RIO DE JANEIRO | RJ     |
+| ANA     | F    | ANA@IG.COM        | CEL  | 78989765  | JARDINS    | SAO PAULO      | SP     |
+| ANA     | F    | ANA@IG.COM        | CEL  | 99766676  | JARDINS    | SAO PAULO      | SP     |
+| JOAO    | M    | JOAO@IG.COM       | COM  | 66687899  | CENTRO     | RIO DE JANEIRO | RJ     |
+| JOSE    | M    | JORGE@IG.COM      | RES  | 89986668  | CENTRO     | VITORIA        | ES     |
+| CARLOS  | M    | CARLOS@IG.COM     | CEL  | 88687909  | ESTACIO    | RIO DE JANEIRO | RJ     |
+| FLAVIO  | M    | FLAVIO@IG.COM     | RES  | 68976565  | CASCADURA  | B. HORIZONTE   | MG     |
+| FLAVIO  | M    | FLAVIO@IG.COM     | CEL  | 996556675 | CASCADURA  | B. HORIZONTE   | MG     |
+| GEOVANA | F    | ***************   | CEL  | 33567765  | CENTRO     | RIO DE JANEIRO | RJ     |
+| GEOVANA | F    | ***************   | CEL  | 88668786  | CENTRO     | RIO DE JANEIRO | RJ     |
+| GEOVANA | F    | ***************   | COM  | 88965676  | CENTRO     | RIO DE JANEIRO | RJ     |
+| KARLA   | F    | KARLA@GMAIL.COM   | COM  | 89966809  | COPACABANA | RIO DE JANEIRO | RJ     |
+| DANIELE | F    | DANIELE@IG.COM    | COM  | 88679978  | CENTRO     | VITORIA        | ES     |
+| EDUARDO | M    | ***************   | CEL  | 99655768  | CENTRO     | CURITIBA       | PR     |
+| ANTONIO | M    | ANTONIO@IG.COM    | COM  | 89955665  | JARDINS    | SAO PAULO      | SP     |
+| ANTONIO | M    | ANTONIO@UOL.COM   | CEL  | 77455786  | BOM RETIRO | CURITIBA       | PR     |
+| ELAINE  | F    | ELAINE@GLOBO.COM  | RES  | 55689654  | LAPA       | SAO PAULO      | SP     |
+| CARMEM  | F    | CARMEM@IG.COM     | RES  | 89766554  | CENTRO     | RIO DE JANEIRO | RJ     |
+| CARMEM  | F    | CARMEM@IG.COM     | RES  | 77755785  | CENTRO     | RIO DE JANEIRO | RJ     |
+| ADRIANA | F    | ADRIANA@GMAIL.COM | RES  | 44522578  | CENTRO     | RIO DE JANEIRO | RJ     |
+| ADRIANA | F    | ADRIANA@GMAIL.COM | COM  | 88965679  | CENTRO     | RIO DE JANEIRO | RJ     |
+| JOICE   | F    | JOICE@GMAIL.COM   | CEL  | 88965679  | CENTRO     | RIO DE JANEIRO | RJ     |
++---------+------+-------------------+------+-----------+------------+----------------+--------+
+
+SELECT 
+	C.NOME,
+	C.SEXO,
+	IFNULL(C.EMAIL, '***************') AS "E-MAIL",
+	T.TIPO,
+	T.NUMERO,
+	E.BAIRRO,
+	E.CIDADE,
+	E.ESTADO
+FROM CLIENTE C 
+INNER JOIN TELEFONE T 
+ON C.IDCLIENTE = T.ID_CLIENTE
+INNER JOIN ENDERECO E 
+ON C.IDCLIENTE = E.ID_CLIENTE
+ORDER BY 1;
++---------+------+-------------------+------+-----------+------------+----------------+--------+
+| NOME    | SEXO | E-MAIL            | TIPO | NUMERO    | BAIRRO     | CIDADE         | ESTADO |
++---------+------+-------------------+------+-----------+------------+----------------+--------+
+| ADRIANA | F    | ADRIANA@GMAIL.COM | COM  | 88965679  | CENTRO     | RIO DE JANEIRO | RJ     |
+| ADRIANA | F    | ADRIANA@GMAIL.COM | RES  | 44522578  | CENTRO     | RIO DE JANEIRO | RJ     |
+| ANA     | F    | ANA@IG.COM        | CEL  | 78989765  | JARDINS    | SAO PAULO      | SP     |
+| ANA     | F    | ANA@IG.COM        | CEL  | 99766676  | JARDINS    | SAO PAULO      | SP     |
+| ANTONIO | M    | ANTONIO@UOL.COM   | CEL  | 77455786  | BOM RETIRO | CURITIBA       | PR     |
+| ANTONIO | M    | ANTONIO@IG.COM    | COM  | 89955665  | JARDINS    | SAO PAULO      | SP     |
+| CARLOS  | M    | CARLOS@IG.COM     | RES  | 54768899  | ESTACIO    | RIO DE JANEIRO | RJ     |
+| CARLOS  | M    | CARLOS@IG.COM     | CEL  | 88687909  | ESTACIO    | RIO DE JANEIRO | RJ     |
+| CARMEM  | F    | CARMEM@IG.COM     | RES  | 89766554  | CENTRO     | RIO DE JANEIRO | RJ     |
+| CARMEM  | F    | CARMEM@IG.COM     | RES  | 77755785  | CENTRO     | RIO DE JANEIRO | RJ     |
+| DANIELE | F    | DANIELE@IG.COM    | COM  | 88679978  | CENTRO     | VITORIA        | ES     |
+| EDUARDO | M    | ***************   | CEL  | 99655768  | CENTRO     | CURITIBA       | PR     |
+| ELAINE  | F    | ELAINE@GLOBO.COM  | RES  | 55689654  | LAPA       | SAO PAULO      | SP     |
+| FLAVIO  | M    | FLAVIO@IG.COM     | RES  | 68976565  | CASCADURA  | B. HORIZONTE   | MG     |
+| FLAVIO  | M    | FLAVIO@IG.COM     | CEL  | 996556675 | CASCADURA  | B. HORIZONTE   | MG     |
+| GEOVANA | F    | ***************   | CEL  | 33567765  | CENTRO     | RIO DE JANEIRO | RJ     |
+| GEOVANA | F    | ***************   | CEL  | 88668786  | CENTRO     | RIO DE JANEIRO | RJ     |
+| GEOVANA | F    | ***************   | COM  | 88965676  | CENTRO     | RIO DE JANEIRO | RJ     |
+| JOAO    | M    | JOAO@IG.COM       | COM  | 66687899  | CENTRO     | RIO DE JANEIRO | RJ     |
+| JOAO    | M    | JOAO@IG.COM       | CEL  | 99667587  | CENTRO     | RIO DE JANEIRO | RJ     |
+| JOAO    | M    | JOAO@IG.COM       | COM  | 87866896  | CENTRO     | RIO DE JANEIRO | RJ     |
+| JOICE   | F    | JOICE@GMAIL.COM   | CEL  | 88965679  | CENTRO     | RIO DE JANEIRO | RJ     |
+| JOSE    | M    | JORGE@IG.COM      | RES  | 89986668  | CENTRO     | VITORIA        | ES     |
+| JOSE    | M    | JORGE@IG.COM      | RES  | 56576876  | CENTRO     | VITORIA        | ES     |
+| JOSE    | M    | JORGE@IG.COM      | CEL  | 78458743  | CENTRO     | VITORIA        | ES     |
+| KARLA   | F    | KARLA@GMAIL.COM   | COM  | 89966809  | COPACABANA | RIO DE JANEIRO | RJ     |
++---------+------+-------------------+------+-----------+------------+----------------+--------+
+
+SELECT * FROM V_RELATORIO 
+ORDER BY 1;
++---------+------+-------------------+------+-----------+------------+----------------+--------+
+| NOME    | SEXO | E-MAIL            | TIPO | NUMERO    | BAIRRO     | CIDADE         | ESTADO |
++---------+------+-------------------+------+-----------+------------+----------------+--------+
+| ADRIANA | F    | ADRIANA@GMAIL.COM | COM  | 88965679  | CENTRO     | RIO DE JANEIRO | RJ     |
+| ADRIANA | F    | ADRIANA@GMAIL.COM | RES  | 44522578  | CENTRO     | RIO DE JANEIRO | RJ     |
+| ANA     | F    | ANA@IG.COM        | CEL  | 78989765  | JARDINS    | SAO PAULO      | SP     |
+| ANA     | F    | ANA@IG.COM        | CEL  | 99766676  | JARDINS    | SAO PAULO      | SP     |
+| ANTONIO | M    | ANTONIO@UOL.COM   | CEL  | 77455786  | BOM RETIRO | CURITIBA       | PR     |
+| ANTONIO | M    | ANTONIO@IG.COM    | COM  | 89955665  | JARDINS    | SAO PAULO      | SP     |
+| CARLOS  | M    | CARLOS@IG.COM     | RES  | 54768899  | ESTACIO    | RIO DE JANEIRO | RJ     |
+| CARLOS  | M    | CARLOS@IG.COM     | CEL  | 88687909  | ESTACIO    | RIO DE JANEIRO | RJ     |
+| CARMEM  | F    | CARMEM@IG.COM     | RES  | 89766554  | CENTRO     | RIO DE JANEIRO | RJ     |
+| CARMEM  | F    | CARMEM@IG.COM     | RES  | 77755785  | CENTRO     | RIO DE JANEIRO | RJ     |
+| DANIELE | F    | DANIELE@IG.COM    | COM  | 88679978  | CENTRO     | VITORIA        | ES     |
+| EDUARDO | M    | ***********       | CEL  | 99655768  | CENTRO     | CURITIBA       | PR     |
+| ELAINE  | F    | ELAINE@GLOBO.COM  | RES  | 55689654  | LAPA       | SAO PAULO      | SP     |
+| FLAVIO  | M    | FLAVIO@IG.COM     | RES  | 68976565  | CASCADURA  | B. HORIZONTE   | MG     |
+| FLAVIO  | M    | FLAVIO@IG.COM     | CEL  | 996556675 | CASCADURA  | B. HORIZONTE   | MG     |
+| GEOVANA | F    | ***********       | CEL  | 33567765  | CENTRO     | RIO DE JANEIRO | RJ     |
+| GEOVANA | F    | ***********       | CEL  | 88668786  | CENTRO     | RIO DE JANEIRO | RJ     |
+| GEOVANA | F    | ***********       | COM  | 88965676  | CENTRO     | RIO DE JANEIRO | RJ     |
+| JOAO    | M    | JOAO@IG.COM       | COM  | 66687899  | CENTRO     | RIO DE JANEIRO | RJ     |
+| JOAO    | M    | JOAO@IG.COM       | CEL  | 99667587  | CENTRO     | RIO DE JANEIRO | RJ     |
+| JOAO    | M    | JOAO@IG.COM       | COM  | 87866896  | CENTRO     | RIO DE JANEIRO | RJ     |
+| JOICE   | F    | JOICE@GMAIL.COM   | CEL  | 88965679  | CENTRO     | RIO DE JANEIRO | RJ     |
+| JOSE    | M    | JORGE@IG.COM      | RES  | 89986668  | CENTRO     | VITORIA        | ES     |
+| JOSE    | M    | JORGE@IG.COM      | RES  | 56576876  | CENTRO     | VITORIA        | ES     |
+| JOSE    | M    | JORGE@IG.COM      | CEL  | 78458743  | CENTRO     | VITORIA        | ES     |
+| KARLA   | F    | KARLA@GMAIL.COM   | COM  | 89966809  | COPACABANA | RIO DE JANEIRO | RJ     |
++---------+------+-------------------+------+-----------+------------+----------------+--------+
